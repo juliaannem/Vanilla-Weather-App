@@ -43,10 +43,17 @@ function displayTemperature(response) {
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 let apiKey = "d301fateao124ea76ce48beb7c353c42";
-let city = "Toronto";
+let city = "Manila";
 let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
 axios.get(apiURL).then(displayTemperature);
