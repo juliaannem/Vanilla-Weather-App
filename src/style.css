@@ -5,3 +5,13 @@ h1 {
 li::first-letter {
   text-transform: capitalize;
 }
+
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  text-decoration: underline;
+}

@@ -29,6 +29,8 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
 
+  celsiusTemperature = response.data.temperature.current;
+
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
 
@@ -54,7 +56,7 @@ function displayTemperature(response) {
 
 function search(city) {
   let apiKey = "d301fateao124ea76ce48beb7c353c42";
-  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayTemperature);
 }
 
@@ -66,6 +68,34 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
+function fahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  //remove the active class from celsius link
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function celsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 search("Toronto");
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", fahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", celsiusTemp);
