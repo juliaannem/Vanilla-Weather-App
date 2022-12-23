@@ -1,5 +1,18 @@
 h1 {
-  color: blue;
+  color: rgb(95, 155, 192);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  left: -32px;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 li::first-letter {
@@ -14,4 +27,32 @@ li::first-letter {
 
 .active:hover {
   text-decoration: underline;
+}
+
+strong {
+  font-size: 65px;
+  color: rgb(95, 155, 192);
+}
+
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -30px;
+}
+
+.card {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+small {
+  padding-left: 168px;
+  position: relative;
+  top: -30px;
+}
+
+img {
+  position: relative;
+  top: -20px;
+  left: -10px;
 }
