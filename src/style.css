@@ -45,12 +45,6 @@ strong {
   margin: 30px auto;
 }
 
-img {
-  position: relative;
-  top: -20px;
-  left: -10px;
-}
-
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
