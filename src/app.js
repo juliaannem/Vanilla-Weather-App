@@ -33,7 +33,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -72,13 +72,11 @@ function displayForecast(response) {
 function getForecast(city) {
   let apiKey = "d301fateao124ea76ce48beb7c353c42";
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  console.log(apiURL);
+
   axios.get(apiURL).then(displayForecast);
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
-
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
 
@@ -123,34 +121,9 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-function fahrenheitTemp(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  //remove the active class from celsius link
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function celsiusTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 search("Vancouver");
 
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", fahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", celsiusTemp);
