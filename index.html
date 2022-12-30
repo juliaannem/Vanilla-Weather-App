@@ -18,49 +18,51 @@
   </head>
   <body>
     <div class="container">
-      <div class="card">
-        <div class="weather-app card-body">
-          <form id="search-form" class="mb-3">
+      <div class="wrapper">
+        <div class="card">
+          <div class="weather-app card-body">
+            <form id="search-form" class="mb-3">
+              <div class="row">
+                <div class="col-9">
+                  <input
+                    type="search"
+                    placeholder="Enter a city..."
+                    id="city-input"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="col-3">
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="btn btn-primary w-100"
+                  />
+                </div>
+              </div>
+            </form>
+            <h1 id="city"></h1>
+            <ul>
+              <li id="date"></li>
+              <li id="description"></li>
+            </ul>
             <div class="row">
-              <div class="col-9">
-                <input
-                  type="search"
-                  placeholder="Enter a city..."
-                  id="city-input"
-                  autocomplete="off"
-                />
+              <div class="col-6">
+                <img src="" alt="snowy" id="weather-icon" />
+                <strong id="temperature"></strong>
+                <span class="units"> °C </span>
               </div>
-              <div class="col-3">
-                <input
-                  type="submit"
-                  value="Search"
-                  class="btn btn-primary w-100"
-                />
+              <div class="col-6">
+                <ul>
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li>Wind: <span id="wind"></span> km/h</li>
+                </ul>
               </div>
             </div>
-          </form>
-          <h1 id="city"></h1>
-          <ul>
-            <li id="date"></li>
-            <li id="description"></li>
-          </ul>
-          <div class="row">
-            <div class="col-6">
-              <img src="" alt="snowy" id="weather-icon" />
-              <strong id="temperature"></strong>
-              <span class="units"> °C </span>
-            </div>
-            <div class="col-6">
-              <ul>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Wind: <span id="wind"></span> km/h</li>
-              </ul>
-            </div>
+            <div class="weather-forecast" id="forecast"></div>
           </div>
-          <div class="weather-forecast" id="forecast"></div>
-        </div>
 
-        <script src="src/app.js"></script>
+          <script src="src/app.js"></script>
+        </div>
         <small>
           <a
             href="https://github.com/juliaannem/Vanilla-Weather-App"
